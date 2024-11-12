@@ -1,0 +1,55 @@
+#  resturent menu project
+
+menu={
+    "Pizza":100,
+    "Coffee":30,
+    "Rice":90,
+    "Roti":30,
+    "Paratha":50,
+}
+def display_menu():
+    print("\nWelcome to Z-on Hub!")
+    print("Here is our menu:")
+    for item,price in menu.items():
+        print(f"{item}:₹ {price}")
+
+
+
+
+def order_menu():
+    order_total=0
+    order_list=[]
+    while True:
+        item=input("What do you want to give order ? (or type 'done' to finish) ").capitalize()
+        
+
+        if item.lower()=="done":
+            break
+        elif item in menu:
+            quantity=int(input("How much quantity you want ?  "))
+            print(f"Your order {quantity} {item} added  successfully")
+           
+            order_total+=menu[item]*quantity
+            order_list.append((item,quantity,menu[item]*quantity))
+
+        else:
+            print("Sorry! Your order is not availiable here")
+    return order_list,order_total
+
+def order_summery(order_list,order_total):
+    print("\nOrder Summery")
+    for item,quantity,total_order in order_list:
+        print(f"{item} x {quantity} : ₹{total_order}")
+    print(f"Your total order cost is {order_total} ")
+    print("Thank you for dining with us!\n")
+
+
+display_menu()
+order_list,order_total=order_menu()
+order_summery(order_list,order_total)
+
+
+
+
+
+      
